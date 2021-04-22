@@ -30,7 +30,8 @@
   this program is to maps the training dataset ILSVRC2015 into embedding space. It should note that, there may be more thant one target object in one video sequence. We treat these target object on one video sequences as individual samples for next clustering process.
 
 2.generate video feature
-  run video_feature_rate.py to 
+  run video_feature_rate.py in ./bin to generate video feature.
+  we use a covariance matrix to screen these contaminated feature maps with occlusion, motion blur and so on, which will significant decrease the reliability of video features.
 
 # Experiments
 
