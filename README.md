@@ -32,6 +32,35 @@
 2.generate video feature
   run video_feature_rate.py in ./bin to generate video feature.
   we use a covariance matrix to screen these contaminated feature maps with occlusion, motion blur and so on, which will significant decrease the reliability of video features.
+  
+(note:the after part of this section opearated on matlab!!!)
+
+3.acquire video features and use pca to generate 3 dimension video features for debugging.
+    run get_data.m in ./feature_cluster to load cluster data to RAM.
+    run feature_pca.m in ./feature_cluster to get pca data for debug.
+    This process will take about 8GB RAM. best operated on 16GB RAM computer. We strongly recommend you to restorage the generated data to mat file this will shorten the data loading process for the next time. rename the generated 'score' matrix to features_pca. The features_pca will be used to visuallize the clustered result on 3D plot. if you are RAM comsume you can only keep the first 3 dim of features_pca.
+
+4.cluster the video features
+    run data_cluster.m in ./feature_cluster to acquire traditional k-means cluster result.
+    run data_cluster_balanced.m in ./feature_cluster to acquire PIk-means cluster result.
+    You can use gpuArray in matlab to accelerate the cluster process.  
+
+5.create result for futher process to train base trackers
+    run create_result.m in ./feature_cluster to acurire result_index.txt and result_root.txt file.
+
+## Train base trackers
+1.generate meta data for base trackers.
+    run generate_cluster_mata_data.py in ./bin to generate meta.
+    The generated meta data will be stored in the training data set folder where you generate the lmdb file during the "train SiamFC" process. these meta data contain indexes of each cluster which decide each base tracker's training data set.
+    
+2.train base trackers
+    run train_siamfc_sep.py in ./bin to train each base tracker.
+    The 6 base trackers will be trained according to the meta data generated in aforementioned process. the base tracker's model will be stored in ./models folder named "siamfc_cluster*.pth"
+    
+## Train CW module
+    train cw module
+    run train_siamfc_mix_cw.py in .\bin to train the CW module
+    the
 
 # Experiments
 
