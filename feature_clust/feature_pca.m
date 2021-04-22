@@ -1,0 +1,1 @@
+[coeff, score, lattent] = pca(video_features);
