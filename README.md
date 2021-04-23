@@ -64,7 +64,7 @@ video_feature_rate.py
 get_data.m
 feature_pca.m
 ```
-    Run "get_data.m" in "./feature_cluster" to load video features into RAM. Run "feature_pca.m" in "./feature_cluster" to get pca data for debug. This process will take about 8GB RAM. best operated on 16GB RAM computer. We strongly recommend you to restorage the generated data to ".mat" file this will shorten the data loading process for the next time. Rename the generated "score" matrix to "features_pca". The "features_pca" will be used to visuallize the clustered result on 3D plot. if you are RAM comsume you can only keep the first 3 dim of "features_pca".
+Run "get_data.m" in "./feature_cluster" to load video features into RAM. Run "feature_pca.m" in "./feature_cluster" to get pca data for debug. This process will take about 8GB RAM. best operated on 16GB RAM computer. We strongly recommend you to restorage the generated data to ".mat" file this will shorten the data loading process for the next time. Rename the generated "score" matrix to "features_pca". The "features_pca" will be used to visuallize the clustered result on 3D plot. if you are RAM comsume you can only keep the first 3 dim of "features_pca".
 
 ### 4.Cluster the video features
 ```bash
