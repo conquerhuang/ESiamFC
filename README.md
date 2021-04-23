@@ -13,45 +13,45 @@ demo_ESiamFC.py
 ```
 Run "demo_ESiamFC.py" in ".\bin" folder. Impermanent detail and experiments are conducted on the subsequent sections.
 ## 
-# impermanent detail
-## train SiamFC
-### 1.download dataset
+# Impermanent detail
+## Train SiamFC
+### 1.Download dataset
   We use ILSVRC2015 as our training dataset you you can download it at http://bvisionweb1.cs.unc.edu/ilsvrc2015/ILSVRC2015_VID.tar.gz. If you are in China you can download it at baidu netdisk：https://pan.baidu.com/s/1TTxBRIzFNum3dSF753fIGw  key 6pot.
 
-### 2.create training samples
+### 2.Create training samples
 ```bash
 create_dataset.py
 ```
   Run "create_dataset.py" in ".\bin" to crop video sequences. This program crops video sequences into training samples for subsequent training process.
 
-### 3.create lmdb file
+### 3.Create lmdb file
 ```bash
 create_lmdb.py
 ```
   Run "create_lmdb.py" in ".\bin" to create lmdb file In order to read image pairs from hard disk fastly especially for HDD since cv2.imread is too slow.
    (this will take about 50GB storage we strongly recommend you to create this lmdb file on SSD for faster training process)
 
-### 4.train SiamFC
+### 4.Train SiamFC
 ```bash
 train_siamfc.py
 ```
   Run "train_siamfc.py" in ".\bin" to train SiamFC. During the training process the generated model will be stored in ".\models" directory. you can use tensorboard toolbox to observe the train loss and valid loss.
 
-### 5.select model with got10k toolbox
+### 5.Select model with got10k toolbox
 ```bash
 Siam_FC.py
 ```
   Run "Siam_FC.py" in "./got10k/trackers" to teset the trained models and select the one with best performance as the baseline for the netx step. The performance of SiamFC trained with Pytorch toolbox on pycharm will be slightly lower than that trained on Matlab (with same hyperparameter).
 
-## generate dataset clusters
+## Generate dataset clusters
 If you only intersted in PIk-means. We give out the generated video features on https://pan.baidu.com/s/19in-zFqyOJBnqVwgYmcksA key djdw. You can directly download the generated video features and skip the video feature generate process. jump to step4: "cluster the video features"
-### 1.map the training dataset into embedding sapce
+### 1.Map the training dataset into embedding sapce
 ```bash
 generate_feature_dataset.py
 ```
   Run "generate_feature_dataset.py" in "./bin". this program maps the training dataset ILSVRC2015 into embedding space. It should note that, there may be more thant one target objects in one video sequence. We treat these target objects on one video sequences as individual samples for the subsequent clustering process.
 
-### 2.generate video features
+### 2.Generate video features
 ```bash
 video_feature_rate.py
 ```
@@ -86,7 +86,7 @@ generate_cluster_mata_data.py
 ```
 Run "generate_cluster_mata_data.py" in "./bin" to generate meta data. The generated meta datas will be stored in the training dataset folder. these meta datas contain indexes of each cluster, which indicate each base tracker's training dataset.
     
-### 2.train base trackers
+### 2.Train base trackers
 ```bash
 train_siamfc_sep.py
 ```
@@ -103,7 +103,7 @@ Run "train_siamfc_mix_cw.py" in ".\bin" to train the CW module. The trained mode
 ## Impermanent detail
 All experiments of the proposed ESiamFC is conducted with the got10k toolbox. for the baseline SiamFC we use the source code developed on pytorch from https://github.com/HonglinChu/SiamTrackers/tree/master/2-SiamFC/SiamFC-VID. The model of SiamFC is downloaded from http://www.robots.ox.ac.uk/~luca/siamese-fc.html which is trained on matlab with matconvnet toolbox. And we transformed the matconvnet model to pytorch model with "convert_pretrained_model.py" in ".\bin" folder. Benchmark results of TColor128 and DTB70 with got10k toolbox is slightly different from the results on matlab with same hyperparameters. We use the SiamFC developed on pytorch as baseline, and take the results of SiamFC on got10k toolbox for comparison
 
-## Evaluate ESiamFC on different banchmark
+## Evaluate ESiamFC on different banchmarks
 ```bash
 SiamFC_mix_cw.py
 ```
