@@ -1,6 +1,18 @@
 # ESiamFC
 We propose an ensemble Siamese networks (ESiamFC) for tracking. In detail, firestly, we map the train dataset ILSVRC2015 into embedding space. Secondly, we use balanced k-means to cluster th video features. Thirdly, in each cluster we apply transfer learning into SiamFC to obtain k base trackers with their own preferences. Lastly, we propose a Cluster Fusion module which can automatically assign fusion weight to base trackers according th the semantic information of the tracking object.
 
+# Run ESiamFC
+## Prepare
+### Download model
+Download pretrained model at https://pan.baidu.com/s/10Z0PbuUbnIbwnq3mY2ZNAQ key akhk. Put the pretrained model into "./model" folder. Put video sequence with OTB format into "./video" folder.
+### Create enviroment
+Create conda enviroment and install the packages listed on the enviroment list "env.txt"
+### Run ESiamFC
+```bash
+demo_siamfc_mix_cw.py
+```
+Run "demo_siamfc_mix_cw.py" in ".\bin" folder. Impermanent detail and experiments are conducted on the subsequent sections.
+## 
 # impermanent detail
 ## train SiamFC
 ### 1.download dataset
@@ -32,7 +44,7 @@ Siam_FC.py
   Run "Siam_FC.py" in "./got10k/trackers" to teset the trained models and select the one with best performance as the baseline for the netx step. The performance of SiamFC trained with Pytorch toolbox on pycharm will be slightly lower than that trained on Matlab (with same hyperparameter).
 
 ## generate dataset clusters
-
+If you only intersted in PIk-means. We give out the generated video features on https://pan.baidu.com/s/19in-zFqyOJBnqVwgYmcksA key djdw. You can directly download the generated video features and skip the video feature generate process. jump to step4: "cluster the video features"
 ### 1.map the dataset into embedding sapce
 ```bash
 generate_feature_dataset.py
