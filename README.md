@@ -97,6 +97,7 @@ train_siamfc_mix_cw.py
 ```bash
 SiamFC_mix_cw.py
 ```
+
     Run "SiamFC_mix_cw.py" in ".\got10k\trackers" to get results of ESiamFC on multiple benchmarks. You can use multiprocessing toolbox to simultaneously run multiple models to save the evaluate time.
 
 
