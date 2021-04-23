@@ -4,7 +4,7 @@ We propose an ensemble Siamese networks (ESiamFC) for tracking. In detail, fires
 # Run ESiamFC
 ## Prepare
 ### Download model
-Download pretrained model at https://pan.baidu.com/s/10Z0PbuUbnIbwnq3mY2ZNAQ key akhk. Put the pretrained model into "./model" folder. Put video sequence with OTB format into "./video" folder.
+Download the pretrained model at https://pan.baidu.com/s/10Z0PbuUbnIbwnq3mY2ZNAQ key akhk. Put the pretrained model into "./model" folder. Put video sequence with OTB format into "./video" folder.
 ### Create enviroment
 Create conda enviroment and install the packages listed on the enviroment list "env.txt"
 ### Run ESiamFC
@@ -103,7 +103,7 @@ Run "train_siamfc_mix_cw.py" in ".\bin" to train the CW module. The trained mode
 ## Impermanent detail
 All experiments of the proposed ESiamFC is conducted with the got10k toolbox. for the baseline SiamFC we use the source code developed on pytorch from https://github.com/HonglinChu/SiamTrackers/tree/master/2-SiamFC/SiamFC-VID. The model of SiamFC is downloaded from http://www.robots.ox.ac.uk/~luca/siamese-fc.html which is trained on matlab with matconvnet toolbox. And we transformed the matconvnet model to pytorch model with convert_pretrained_model.py in .\bin folder. Benchmark results of TColor128 and DTB70 with got10k toolbox is slightly different from the results on matlab with same hyperparameters. We use the SiamFC developed on pytorch as baseline, and take the results of SiamFC on got10k toolbox for comparison
 
-## experiment on different banchmark
+## Evaluate ESiamFC on different banchmark
 ```bash
 SiamFC_mix_cw.py
 ```
